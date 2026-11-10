@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Number Guessing Game</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="game-container">
+
+    <!-- Header -->
+    <header class="game-header">
+        <div class="logo">🎯</div>
+
+        <div>
+            <h1>Number Guessing Game</h1>
+            <p>Can you guess the secret number?</p>
+        </div>
+    </header>
+
+
+    <!-- Game Card -->
+    <main class="game-card">
+
+        <!-- Difficulty -->
+        <div class="difficulty-section">
+
+            <label for="difficulty">
+                Select Difficulty
+            </label>
+
+            <select id="difficulty">
+                <option value="easy">Easy — 1 to 50</option>
+                <option value="medium" selected>Medium — 1 to 100</option>
+                <option value="hard">Hard — 1 to 500</option>
+            </select>
+
+        </div>
+
+
+        <!-- Game Information -->
+        <div class="info-grid">
+
+            <div class="info-box">
+                <span>🎲</span>
+                <div>
+                    <small>Range</small>
+                    <strong id="rangeText">1 - 100</strong>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <span>❤️</span>
+                <div>
+                    <small>Attempts Left</small>
+                    <strong id="attemptsText">10</strong>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <span>🏆</span>
+                <div>
+                    <small>Score</small>
+                    <strong id="scoreText">100</strong>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Status -->
+        <div class="status-box" id="statusBox">
+            <span class="status-icon">💡</span>
+
+            <div>
+                <h3 id="statusTitle">Make Your Guess</h3>
+
+                <p id="statusMessage">
+                    Enter a number between 1 and 100.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- Input -->
+        <div class="guess-section">
+
+            <label for="guessInput">
+                Enter your guess
+            </label>
+
+            <div class="input-row">
+
+                <input
+                    type="number"
+                    id="guessInput"
+                    placeholder="Enter number..."
+                    min="1"
+                    max="100"
+                >
+
+                <button id="guessBtn">
+                    Guess
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Progress -->
+        <div class="progress-section">
+
+            <div class="progress-info">
+                <span>Game Progress</span>
+
+                <span id="progressText">
+                    0 / 10
+                </span>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+        </div>
+
+
+        <!-- Previous Guesses -->
+        <div class="history-section">
+
+            <div class="section-title">
+                <h3>Previous Guesses</h3>
+                <span id="guessCount">0 guesses</span>
+            </div>
+
+            <div id="guessHistory" class="guess-history">
+                <span class="empty-history">
+                    Your guesses will appear here.
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- Restart -->
+        <button id="restartBtn" class="restart-btn">
+            🔄 Restart Game
+        </button>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>🎯 Guess the number • Have fun!</p>
+    </footer>
+
+</div>
+
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>

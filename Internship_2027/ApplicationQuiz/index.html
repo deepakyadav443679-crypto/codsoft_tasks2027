@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuizMaster - Online Quiz</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Top Header -->
+        <header class="topbar">
+
+            <div class="logo">
+                <div class="logo-icon">Q</div>
+
+                <div>
+                    <h2>QuizMaster</h2>
+                    <p>Test your knowledge</p>
+                </div>
+            </div>
+
+            <div class="quiz-info">
+                <span>Quiz</span>
+                <span id="question-number">01 / 10</span>
+            </div>
+
+        </header>
+
+
+        <!-- Main Content -->
+        <main class="quiz-wrapper">
+
+            <!-- Left Side -->
+            <section class="quiz-card">
+
+                <div class="category">
+                    <span>💻</span>
+                    Web & Programming
+                </div>
+
+                <h1 id="question">
+                    Question will appear here
+                </h1>
+
+                <p class="instruction">
+                    Select the correct answer from the options below.
+                </p>
+
+
+                <!-- Options -->
+                <div id="options-container">
+
+                    <!-- JavaScript will create options -->
+
+                </div>
+
+
+                <!-- Bottom -->
+                <div class="bottom-area">
+
+                    <div class="progress-info">
+                        <span>Progress</span>
+                        <span id="progress-text">10%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div id="progress"></div>
+                    </div>
+
+                    <button id="next-btn">
+                        Next Question
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Right Side -->
+            <aside class="side-card">
+
+                <!-- Timer -->
+                <div class="timer-card">
+
+                    <p>TIME REMAINING</p>
+
+                    <div class="timer-circle">
+
+                        <svg>
+                            <circle
+                                cx="60"
+                                cy="60"
+                                r="52">
+                            </circle>
+
+                            <circle
+                                id="timer-circle"
+                                cx="60"
+                                cy="60"
+                                r="52">
+                            </circle>
+                        </svg>
+
+                        <div class="timer-number">
+                            <span id="timer">15</span>
+                            <small>sec</small>
+                        </div>
+
+                    </div>
+
+                    <p class="timer-note">
+                        Think carefully!
+                    </p>
+
+                </div>
+
+
+                <!-- Quiz Details -->
+                <div class="details-card">
+
+                    <h3>Quiz Details</h3>
+
+                    <div class="detail">
+                        <span>Questions</span>
+                        <strong>10</strong>
+                    </div>
+
+                    <div class="detail">
+                        <span>Time / Question</span>
+                        <strong>15 sec</strong>
+                    </div>
+
+                    <div class="detail">
+                        <span>Type</span>
+                        <strong>MCQ</strong>
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </main>
+
+    </div>
+
+
+    <!-- Result Screen -->
+    <div id="result-container" class="result-screen">
+
+        <div class="result-card">
+
+            <div class="trophy">
+                🏆
+            </div>
+
+            <p class="completed">
+                QUIZ COMPLETED
+            </p>
+
+            <h1>Great Job!</h1>
+
+            <p class="result-description">
+                You have successfully completed the quiz.
+            </p>
+
+
+            <div class="score-box">
+
+                <span>Your Score</span>
+
+                <h2>
+                    <span id="score">0</span>
+                    <small>/ 10</small>
+                </h2>
+
+            </div>
+
+
+            <div class="result-stats">
+
+                <div>
+                    <strong id="correct-count">0</strong>
+                    <span>Correct</span>
+                </div>
+
+                <div>
+                    <strong id="wrong-count">0</strong>
+                    <span>Wrong</span>
+                </div>
+
+                <div>
+                    <strong id="percentage">0%</strong>
+                    <span>Percentage</span>
+                </div>
+
+            </div>
+
+
+            <p id="result-message"></p>
+
+            <button id="restart-btn">
+                ↻ &nbsp; Try Again
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

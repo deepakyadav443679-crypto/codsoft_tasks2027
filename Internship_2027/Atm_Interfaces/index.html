@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank ATM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="atm-container">
+
+    <!-- LEFT ATM BRAND -->
+    <div class="brand">
+        <div class="logo-circle">S</div>
+        <h1>SECURE<span>BANK</span></h1>
+        <p>SMART ATM BANKING</p>
+    </div>
+
+    <!-- PIN SCREEN -->
+    <section id="pinScreen" class="screen active">
+
+        <div class="top-bar">
+            <span>SECUREBANK ATM</span>
+
+            <select id="language">
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+            </select>
+        </div>
+
+        <div class="pin-card">
+
+            <div class="lock-icon">🔐</div>
+
+            <h2 id="welcomeText">Welcome to SecureBank</h2>
+
+            <p id="pinText">
+                Enter your 4-digit ATM PIN to continue
+            </p>
+
+            <div class="pin-display">
+                <span id="dot1"></span>
+                <span id="dot2"></span>
+                <span id="dot3"></span>
+                <span id="dot4"></span>
+            </div>
+
+            <div class="keypad">
+
+                <button onclick="enterPin(1)">1</button>
+                <button onclick="enterPin(2)">2</button>
+                <button onclick="enterPin(3)">3</button>
+
+                <button onclick="enterPin(4)">4</button>
+                <button onclick="enterPin(5)">5</button>
+                <button onclick="enterPin(6)">6</button>
+
+                <button onclick="enterPin(7)">7</button>
+                <button onclick="enterPin(8)">8</button>
+                <button onclick="enterPin(9)">9</button>
+
+                <button class="clear" onclick="clearPin()">C</button>
+                <button onclick="enterPin(0)">0</button>
+                <button class="enter" onclick="verifyPin()">✓</button>
+
+            </div>
+
+            <p id="pinMessage" class="message"></p>
+
+            <p class="demo">
+                Demo PIN: <b>9755</b>
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- ATM DASHBOARD -->
+    <section id="dashboard" class="screen">
+
+        <div class="dashboard-header">
+
+            <div>
+                <p class="small">SECUREBANK ATM</p>
+                <h2 id="hello">Welcome, Deepak 👋</h2>
+            </div>
+
+            <div class="header-buttons">
+
+                <select id="dashboardLanguage">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                </select>
+
+                <button class="logout" onclick="logout()">
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- BALANCE -->
+        <div class="balance-card">
+
+            <div>
+                <p>Available Balance</p>
+
+                <h1>
+                    ₹ <span id="balance">25000</span>
+                </h1>
+            </div>
+
+            <div class="bank-chip">
+                ATM
+            </div>
+
+        </div>
+
+
+        <!-- MAIN OPTIONS -->
+        <h3 class="section-title">Select Transaction</h3>
+
+        <div class="options">
+
+            <button onclick="showWithdraw()" class="option withdraw">
+                <div class="icon">💸</div>
+                <div>
+                    <strong>Withdraw Money</strong>
+                    <span>Take cash from your account</span>
+                </div>
+            </button>
+
+
+            <button onclick="showDeposit()" class="option deposit">
+                <div class="icon">💰</div>
+                <div>
+                    <strong>Deposit Money</strong>
+                    <span>Add money to your account</span>
+                </div>
+            </button>
+
+
+            <button onclick="checkBalance()" class="option">
+                <div class="icon">💳</div>
+                <div>
+                    <strong>Check Balance</strong>
+                    <span>View your current balance</span>
+                </div>
+            </button>
+
+
+            <button onclick="showHistory()" class="option">
+                <div class="icon">📜</div>
+                <div>
+                    <strong>Transaction History</strong>
+                    <span>View recent transactions</span>
+                </div>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- WITHDRAW SCREEN -->
+    <section id="withdrawScreen" class="screen">
+
+        <div class="transaction-header">
+
+            <button onclick="backDashboard()" class="back">
+                ← Back
+            </button>
+
+            <h2>Withdraw Money</h2>
+
+        </div>
+
+
+        <div class="transaction-card">
+
+            <div class="money-icon">💸</div>
+
+            <h2>Enter Withdrawal Amount</h2>
+
+            <p>How much money would you like to withdraw?</p>
+
+            <div class="amount-input">
+                <span>₹</span>
+                <input
+                    type="number"
+                    id="withdrawAmount"
+                    placeholder="Enter amount"
+                    min="100">
+            </div>
+
+
+            <div class="quick-buttons">
+
+                <button onclick="setWithdraw(500)">₹500</button>
+                <button onclick="setWithdraw(1000)">₹1,000</button>
+                <button onclick="setWithdraw(2000)">₹2,000</button>
+                <button onclick="setWithdraw(5000)">₹5,000</button>
+
+            </div>
+
+
+            <button class="confirm-btn" onclick="confirmWithdraw()">
+                Confirm Withdrawal →
+            </button>
+
+            <p id="withdrawMessage" class="message"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DEPOSIT SCREEN -->
+    <section id="depositScreen" class="screen">
+
+        <div class="transaction-header">
+
+            <button onclick="backDashboard()" class="back">
+                ← Back
+            </button>
+
+            <h2>Deposit Money</h2>
+
+        </div>
+
+
+        <div class="transaction-card">
+
+            <div class="money-icon">💰</div>
+
+            <h2>Enter Deposit Amount</h2>
+
+            <p>Enter the amount you want to deposit.</p>
+
+            <div class="amount-input">
+                <span>₹</span>
+
+                <input
+                    type="number"
+                    id="depositAmount"
+                    placeholder="Enter amount"
+                    min="100">
+
+            </div>
+
+
+            <div class="quick-buttons">
+
+                <button onclick="setDeposit(500)">₹500</button>
+                <button onclick="setDeposit(1000)">₹1,000</button>
+                <button onclick="setDeposit(2000)">₹2,000</button>
+                <button onclick="setDeposit(5000)">₹5,000</button>
+
+            </div>
+
+
+            <button class="confirm-btn deposit-btn"
+                    onclick="confirmDeposit()">
+
+                Confirm Deposit →
+
+            </button>
+
+            <p id="depositMessage" class="message"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- HISTORY SCREEN -->
+    <section id="historyScreen" class="screen">
+
+        <div class="transaction-header">
+
+            <button onclick="backDashboard()" class="back">
+                ← Back
+            </button>
+
+            <h2>Transaction History</h2>
+
+        </div>
+
+
+        <div class="history-card">
+
+            <div id="historyList">
+
+                <div class="transaction">
+                    <div>
+                        <strong>Opening Balance</strong>
+                        <span>SecureBank ATM</span>
+                    </div>
+
+                    <b>₹25,000</b>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUCCESS MODAL -->
+    <div id="successModal" class="modal">
+
+        <div class="success-box">
+
+            <div class="success-icon">✓</div>
+
+            <h2 id="successTitle">
+                Transaction Successful
+            </h2>
+
+            <p id="successText">
+                Your transaction has been completed successfully.
+            </p>
+
+            <button onclick="closeSuccess()">
+                Continue
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
